@@ -18,5 +18,7 @@ require("../application.scss");
 // const imagePath = (name) => images(name, true)
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true);
+let helperRequireContext = require.context("helpers", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
+ReactRailsUJS.useContext(helperRequireContext);

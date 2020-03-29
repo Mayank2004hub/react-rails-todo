@@ -1,14 +1,33 @@
-import {Layout, Menu, Sider, SubMenu} from "antd";
-import React from "react";
+import { Menu, Layout } from 'antd'
+import { Link } from 'react-router-dom'
+import React from 'react'
+import { useHistory } from 'react-router'
+import AppRoutes from '../helpers/AppRoutes'
 
 const Sidebar = () => {
-    return <Sider width={200} className="site-layout-background">
-        <Menu
-            mode="inline"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{height: '100%', borderRight: 0}}
-        >
-        </Menu>
-    </Sider>
+  const history = useHistory()
+
+  return <Layout.Sider
+    style={{
+      overflow: 'auto',
+      height: '100vh',
+      position: 'fixed',
+    }}
+    width={200}
+    className="site-layout-background"
+    theme="light"
+  >
+    <Menu
+      theme="light"
+      selectedKeys={[history.location.pathname]}
+      defaultOpenKeys={["open"]}
+      mode="inline"
+    >
+      <Menu.Item key={AppRoutes.home}>
+        <Link to={AppRoutes.home}>Home</Link>
+      </Menu.Item>
+    </Menu>
+  </Layout.Sider>
 }
+
+export default Sidebar
